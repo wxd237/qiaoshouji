@@ -1,0 +1,33 @@
+{
+  "name": "10010抢手机",
+  "description": "10010抢手机",
+  "version": "1.2",
+  "permissions": [
+   "tabs", "http://*/*", "https://*/*"
+ ],
+  "browser_action": {
+    "default_title": "Set this page's color.",
+     "default_icon": "icon1.png",
+      "default_popup": "popup.html"
+  },
+
+  "manifest_version": 2,
+    "content_scripts": [
+    {
+      "matches": ["http://www.10010.com/*"],
+      "js": ["plug.js"],
+      "run_at":"document_end"
+    },
+	{
+      "matches": ["http://www.10010.com/mall-web/GoodsDetail/promtlyBuy"],
+      "js": ["address.js"]
+
+    },
+	{
+      "matches": ["http://www.10010.com/goodsdetail/*.html"],
+      "js": ["iphone6.js"]
+    }
+
+  ]
+
+}
