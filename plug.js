@@ -9288,7 +9288,7 @@ function getLeftTime(){
 	//		var t1=18*3600+56*60+3;
 		var t2=hour*3600+min*60+sec+msec/1000;
 
-			var painyi=$("#pianyi").val();
+		//	var painyi=$("#pianyi").val();
 			var d1=t1-t2;
 
 

@@ -7,7 +7,7 @@ function seluser(user){
     var customname="刘俊";
     var idcardno="412728198707010827";
     var mobileno="18139035603";
-    var addressname="""乌市天山区南门国际置地A2一单元1401";
+    var addressname="乌市天山区南门国际置地A2一单元1401";
 
   }
 
@@ -29,7 +29,7 @@ function seluser(user){
       var customname="党从飞";
       var idcardno="654127198701090034";
       var mobileno="15809911938";
-      var addressname="乌市天山区南门国际置地B3 一单元1401";
+      var addressname="乌市天山区南门国际置地B3一单元1401";
   }
 
   if(user==4){
@@ -43,15 +43,66 @@ function seluser(user){
       var customname="王振亭";
       var idcardno="372922199008257366";
       var mobileno="13554198990";
-      var addressname="乌鲁木齐市天山区金银路82号农信科技中心";
+      var addressname="新疆乌鲁木齐天山区幸福南路70号幸福电影院";
   }
 
   if(user==6){
       var customname="蔡叙伦";
       var idcardno="372922199008257366";
       var mobileno="13554198990";
-      var addressname="乌鲁木齐市天山区金银路82号农信科技中心";
+      var addressname="大湾北路140号工行小区8号楼2单元301";
   }
+
+  if(user==7){
+      var customname="虞珊玲";
+      var idcardno="42092219881111352X";
+      var mobileno="13554198990";
+      var addressname="新疆乌鲁木齐天山区金银路国土资源厅";
+  }
+
+  if(user==8){
+    var customname="张晶";
+    var  idcardno="652302199211221528";
+    var mobileno="13109022432";
+    var addressname="乌鲁木齐天山区市龙泉街171号";
+  }
+
+  if(user==9){
+    var customname="徐新生";
+    var  idcardno="652326196309161532";
+    var mobileno="13999361168";
+    var addressname="阜康市迎宾路3号信合苑";
+
+  }
+  if(user==10){
+    var customname="张燕萍";
+    var  idcardno="652302196312231561";
+    var mobileno="13369802360";
+    var addressname="阜康市准噶尔路17号机电市场永安保险公司";
+  }
+
+  if(user==11){
+    var customname="严雪";
+    var  idcardno="652302199107291526";
+    var mobileno="15099091229";
+    var addressname="乌鲁木齐市新市区北京南路中核大厦B座9楼";
+  }
+
+  if(user==12){
+    var customname="严焱";
+    var  idcardno="652302198703311533";
+    var mobileno="13309941776";
+    var addressname="昌吉回族自治州阜康市博龙小区11栋3单元202室";
+  }
+
+  if(user==13){
+    var customname="刘冲亚";
+    var  idcardno="412728199010096418";
+    var mobileno="13309941776";
+    var addressname="昌吉回族自治州阜康市博龙小区11栋3单元202室";
+  }
+
+
 
 
   chrome.tabs.executeScript(null,
