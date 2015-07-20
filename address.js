@@ -31,11 +31,11 @@ $("#receiverName").val(customname);
 $("#consignee").val(customname);
 $("#mobile").val(mobileno);
 $("#idCard").val(idcardno);
-$("#recommend").val("王西迪");
-$("#recommendCode").val('18690173700');
+//$("#recommend").val("王西迪");
+//$("#recommendCode").val('18690173700');
 
-$("#recommend").attr("readonly","readonly")
-$("#recommendCode").attr("readonly","readonly")
+//$("#recommend").attr("readonly","readonly")
+//$("#recommendCode").attr("readonly","readonly")
 
 var se=document.getElementById('cityId');
 
