@@ -102,7 +102,12 @@ function seluser(user){
     var addressname="新疆昌吉市呼图壁县西市路大唐公寓楼";
   }
 
-
+  if(user==14){
+    var customname="赵慧";
+    var  idcardno="652922198009240550";
+    var mobileno="18099205026";
+    var addressname="新疆幸福花园7期";
+  }
 
 
   chrome.tabs.executeScript(null,
