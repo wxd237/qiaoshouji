@@ -98,8 +98,8 @@ function seluser(user){
   if(user==13){
     var customname="刘冲亚";
     var  idcardno="412728199010096418";
-    var mobileno="13309941776";
-    var addressname="昌吉回族自治州阜康市博龙小区11栋3单元202室";
+    var mobileno="18139035602";
+    var addressname="新疆昌吉市呼图壁县西市路大唐公寓楼";
   }
 
 
