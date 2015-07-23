@@ -34,9 +34,9 @@ function seluser(user){
 
   if(user==4){
       var customname="宋浩";
-      var idcardno="654127198701090034";
-      var mobileno="15809911938";
-      var addressname="乌鲁木齐市天山区金银路82号农信科技中心";
+      var idcardno="650104198909230018";
+      var mobileno="17799106230";
+      var addressname="新疆乌鲁木齐天山区中山路百花村软件园6楼";
   }
 
   if(user==5){
