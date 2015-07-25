@@ -106,7 +106,7 @@ function seluser(user){
     var customname="赵慧";
     var  idcardno="652922198009240550";
     var mobileno="18099205026";
-    var addressname="新疆幸福花园7期";
+    var addressname="乌鲁木齐市天山区幸福花园7期54楼3单元201室";
   }
 
 
