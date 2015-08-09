@@ -43,3 +43,6 @@ var se=document.getElementById('cityId');
   $("#networkInfoSave").trigger("click");
   $("#netProtocol").trigger("click");
   $("#networkInfoSave").click();
+
+
+  document.getElementsByClassName('nowBuyAt')[0].style.display="block";

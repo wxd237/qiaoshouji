@@ -26,7 +26,11 @@
 	{
       "matches": ["http://www.10010.com/goodsdetail/*.html"],
       "js": ["iphone6.js"]
-    }
+    },
+    {
+        "matches": ["http://www.10010.com/mast/seckill/Seckill*"],
+        "js": ["qiaogou.js"]
+      }
 
   ]
 

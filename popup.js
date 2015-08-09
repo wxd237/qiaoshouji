@@ -108,6 +108,51 @@ function seluser(user){
     var mobileno="18099205026";
     var addressname="乌鲁木齐市天山区幸福花园7期54楼3单元201室";
   }
+  if(user==15){
+    var customname="王晓雯";
+    var  idcardno="65282919910222142X";
+    var mobileno="18690177873";
+    var addressname="西山路70号华美博奥小区一期11号楼1单元501";
+  }
+  if(user==16){
+    var customname="王修明";
+    var  idcardno="372928198805251294";
+    var mobileno="18699086899";
+    var addressname="乌鲁木齐市南湖北路亚欧城市映像5号楼2单元1504";
+
+  }
+  if(user==17){
+    var customname="杨炜";
+    var  idcardno="659001198506203414";
+    var mobileno="15099155700";
+    var addressname="乌鲁木齐市水磨沟区恒翠花园6号楼1单元401";
+
+  }
+
+  if(usre==18){
+    var customname="张蕾";
+    var  idcardno="650104199101201622";
+    var mobileno="18599034804";
+    var addressname="乌鲁木齐扬子江路42号52号楼3单元502";
+
+  }
+  if(usre==19){
+    var customname="何哲";
+    var  idcardno="650103199408041815";
+    var mobileno="18599034804";
+    var addressname="乌鲁木齐扬子江路42号52号楼3单元502";
+
+  }
+
+  if(usre==20){
+    var customname="郑梓妍";
+    var  idcardno="650104199507041622";
+    var mobileno="13565837303";
+    var addressname="乌鲁木齐太原路家属院三区4号楼三单元201";
+
+  }
+
+
 
 
   chrome.tabs.executeScript(null,
@@ -144,6 +189,7 @@ function seluser(user){
 document.addEventListener('DOMContentLoaded', function () {
   var divs = document.querySelectorAll('div');
   var div1=document.getElementById('blue');
+  var div2=document.getElementById('shezhi');
     div1.addEventListener('click', function(e){
       var delayset=document.getElementById('delayset');
       chrome.tabs.executeScript(null,
@@ -156,6 +202,9 @@ document.addEventListener('DOMContentLoaded', function () {
       window.close();
 
     });
+
+
+
 
 
     var sel=document.getElementById("userid");

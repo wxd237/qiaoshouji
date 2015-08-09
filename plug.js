@@ -9208,6 +9208,11 @@ if ( typeof noGlobal === strundefined ) {
 return jQuery;
 
 }));
+document.getElementsByClassName("goodsTabDetalShow")[0].style.display="none";
+document.getElementsByClassName("goodsRecom")[0].style.display="none";
+document.getElementsByClassName("picShow")[0].style.display="none";
+//document.getElementsByClassName("serviceH")[0].style.display="none";
+document.getElementsByClassName("goodsTab")[0].style.display="none";
 
 
 $(".img-check-input").keydown(function(e){ if (e.keyCode == 13) {$("#verifyCaptcha").click();} });
@@ -9244,7 +9249,7 @@ function getpianyi(){
 	return pianyizhiflt;
 }
 
-
+	$(".nowBuyAt").show();
 
 function getLeftTime(){
 
@@ -9258,39 +9263,31 @@ function getLeftTime(){
 	var sec=D.getSeconds();
 	var msec=D.getMilliseconds();
 
-	if(hour<13  ){
 
-		var t1=12*3600+3+getpianyi();
-    //	var t1=4*3600+24*60;
-		var t2=hour*3600+min*60+sec+msec/1000;
+	if(hour>=1){
 
-			var painyi=$("#pianyi").val();
-			var d1=t1-t2;
+		/*
+		*
+		*/
 
-			if(d1<0){
-				clearInterval(interid);
-				$("#verifyCaptcha").click();
-			}
+		//var th1=document.getElementById("emH").innerText;
+	//	var tm1=document.getElementById("emM").innerText;
+	//	var ts1=document.getElementById("emS").innerText;
+	//	var tms1=document.getElementById("emMS").innerText;
 
-			var h1=Math.floor(d1/3600);
-			var m1=Math.floor((d1-h1*3600)/60);
-			var s1=d1%60;
+	  // var system_sec=	parseInt(th1)*3600+parseInt(tm1)*60+parseInt(ts1)+parseInt(tms1)/10;
 
-			var str1=h1+":"+m1+":"+s1;
-
-			return str1;
-	}
-
-
-	if(hour>=12){
 	//	var t1=19*3600+18*60;
-		var t1=19*3600+18*60+getpianyi();
+		var t1=18*3600+getpianyi();
+
+
 	//		var t1=18*3600+56*60+3;
 		var t2=hour*3600+min*60+sec+msec/1000;
 
 		//	var painyi=$("#pianyi").val();
-			var d1=t1-t2;
 
+			var d1=t1-t2;
+	//	var	d1=system_sec+getpianyi();
 
 			if(d1<0){
 				clearInterval(interid);
@@ -9315,6 +9312,7 @@ var interid=setInterval(function(){
 },200);
 
 
+
   var ltime=$('<label id="daojishi">/<label>').appendTo($(".check-img"));
 	 ltime.css("fontSize","42px");
    ltime.text(getLeftTime());
@@ -9329,3 +9327,5 @@ $(".installment").unbind();
 $(".installment").bind("click",showCaptcha1);
 
 	$(".check-img label img").attr("src","/mall-web/CaptchaGenerate/init?timestamp=1437185703014");
+
+	$(".nowBuyAt").show();
