@@ -9208,11 +9208,23 @@ if ( typeof noGlobal === strundefined ) {
 return jQuery;
 
 }));
-document.getElementsByClassName("goodsTabDetalShow")[0].style.display="none";
-document.getElementsByClassName("goodsRecom")[0].style.display="none";
-document.getElementsByClassName("picShow")[0].style.display="none";
+
+
+function setNone(e){
+	if(e!=null)   
+		e.style.display="none";
+}
+
+setNone(document.getElementsByClassName("goodsTabDetalShow")[0]);
+setNone(document.getElementsByClassName("goodsRecom")[0]);
+setNone(document.getElementsByClassName("picShow")[0]);
+setNone(document.getElementsByClassName("serviceH")[0]);
+setNone(document.getElementsByClassName("goodsTab")[0]);
+//document.getElementsByClassName("goodsTabDetalShow")[0].style.display="none";
+//document.getElementsByClassName("goodsRecom")[0].style.display="none";
+//document.getElementsByClassName("picShow")[0].style.display="none";
 //document.getElementsByClassName("serviceH")[0].style.display="none";
-document.getElementsByClassName("goodsTab")[0].style.display="none";
+//document.getElementsByClassName("goodsTab")[0].style.display="none";
 
 
 $(".img-check-input").keydown(function(e){ if (e.keyCode == 13) {$("#verifyCaptcha").click();} });
@@ -9240,8 +9252,9 @@ function showCaptcha1(){
 select.bind("click",showCaptcha1);
 
 function getpianyi(){
-	var pianyizhi=document.getElementById('searchInputBox').value;
-	var pianyizhiflt=parseFloat(pianyizhi);
+	var pianyizhi=document.getElementById('searchInputBox');
+	if(pianyizhi!=null)  
+	var pianyizhiflt=parseFloat(pianyizhi.value);
 
 	if(isNaN(pianyizhiflt)){
 			pianyizhiflt=0;
@@ -9264,7 +9277,7 @@ function getLeftTime(){
 	var msec=D.getMilliseconds();
 
 
-	if(hour>=1){
+	if(hour>=0){
 
 		/*
 		*
@@ -9319,7 +9332,7 @@ var interid=setInterval(function(){
 
 $(".unity_checkT.ie6Png span").text("不要再抢拉");
 
-	var pianyi=$('<input type="number" name="pianyi" id="pianyi" />').appendTo($(".check-img"));
+	var pianyi=$('<input type="number" name="pianyi" id="pianyi" style="display:none" />').appendTo($(".check-img"));
 
 //unity-check-main
 

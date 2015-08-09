@@ -14,14 +14,9 @@
   "manifest_version": 2,
     "content_scripts": [
     {
-      "matches": ["http://www.10010.com/*"],
+      "matches": ["http://www.10010.com/goodsdetail/*.html"],
       "js": ["plug.js"],
       "run_at":"document_end"
-    },
-	{
-      "matches": ["http://www.10010.com/mall-web/GoodsDetail/promtlyBuy"],
-      "js": ["address.js"]
-
     },
 	{
       "matches": ["http://www.10010.com/goodsdetail/*.html"],

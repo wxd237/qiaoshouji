@@ -23,7 +23,6 @@ $(".package-btn")[0].click();
 
 function choice5s(){
 //$("#versionDd a")[0].click();    //6plus
-$("#versionDd a")[1].click();	   //	6
 
 
 $("#colorDd a")[0].click();	//金色的
@@ -37,7 +36,8 @@ $(".goods-type.J_package a")[0].click();
 $("div.dd a")[1].click();
 $(".package-btn")[0].click();
 
-
+document.getElementById('unity_check').style.top="0px";
+document.getElementById('unity_check').style.left="0px";
 }
 
 
