@@ -14,16 +14,16 @@
   "manifest_version": 2,
     "content_scripts": [
     {
-      "matches": ["http://www.10010.com/goodsdetail/*.html"],
+      "matches": ["http://www.10010.com/mast/seckill/*.html"],
       "js": ["plug.js"],
       "run_at":"document_end"
     },
 	{
-      "matches": ["http://www.10010.com/goodsdetail/*.html"],
+      "matches": ["http://www.10010.com/mast/seckill/*.html"],
       "js": ["iphone6.js"]
     },
     {
-        "matches": ["http://www.10010.com/mast/seckill/Seckill*"],
+        "matches": ["http://www.10010.com/mast/seckill/*.html"],
         "js": ["qiaogou.js"]
       }
 

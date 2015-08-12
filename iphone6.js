@@ -38,10 +38,9 @@ $(".package-btn")[0].click();
 
 document.getElementById('unity_check').style.top="0px";
 document.getElementById('unity_check').style.left="0px";
+
 }
 
 
 //choice6p();
-
-
-choice5s();
+//choice5s();

@@ -9210,16 +9210,7 @@ return jQuery;
 }));
 
 
-function setNone(e){
-	if(e!=null)   
-		e.style.display="none";
-}
 
-setNone(document.getElementsByClassName("goodsTabDetalShow")[0]);
-setNone(document.getElementsByClassName("goodsRecom")[0]);
-setNone(document.getElementsByClassName("picShow")[0]);
-setNone(document.getElementsByClassName("serviceH")[0]);
-setNone(document.getElementsByClassName("goodsTab")[0]);
 //document.getElementsByClassName("goodsTabDetalShow")[0].style.display="none";
 //document.getElementsByClassName("goodsRecom")[0].style.display="none";
 //document.getElementsByClassName("picShow")[0].style.display="none";
@@ -9236,10 +9227,9 @@ function showCaptcha1(){
 
 	$(".img-next").click();
    // $("#unity_check").show().center();
-  $('.img-next').trigger('click');
+  document.getElementsByClassName("img-next")[0].click();
 	$(".img-check-input")[0].focus();
 
-	$(".check-img label img").attr("src","/mall-web/CaptchaGenerate/init?timestamp=1437185703014");
 }
 
 
@@ -9253,7 +9243,7 @@ select.bind("click",showCaptcha1);
 
 function getpianyi(){
 	var pianyizhi=document.getElementById('searchInputBox');
-	if(pianyizhi!=null)  
+	if(pianyizhi!=null)
 	var pianyizhiflt=parseFloat(pianyizhi.value);
 
 	if(isNaN(pianyizhiflt)){
@@ -9283,12 +9273,12 @@ function getLeftTime(){
 		*
 		*/
 
-		//var th1=document.getElementById("emH").innerText;
-	//	var tm1=document.getElementById("emM").innerText;
-	//	var ts1=document.getElementById("emS").innerText;
-	//	var tms1=document.getElementById("emMS").innerText;
+		var th1=document.getElementById("emH").innerText;
+		var tm1=document.getElementById("emM").innerText;
+		var ts1=document.getElementById("emS").innerText;
+		var tms1=document.getElementById("emMS").innerText;
 
-	  // var system_sec=	parseInt(th1)*3600+parseInt(tm1)*60+parseInt(ts1)+parseInt(tms1)/10;
+	   var system_sec=	parseInt(th1)*3600+parseInt(tm1)*60+parseInt(ts1)+parseInt(tms1)/10;
 
 	//	var t1=19*3600+18*60;
 		var t1=18*3600+getpianyi();
@@ -9302,7 +9292,7 @@ function getLeftTime(){
 			var d1=t1-t2;
 	//	var	d1=system_sec+getpianyi();
 
-			if(d1<0){
+			if(d1<0.5){
 				clearInterval(interid);
 				$("#verifyCaptcha").click();
 
@@ -9330,15 +9320,45 @@ var interid=setInterval(function(){
 	 ltime.css("fontSize","42px");
    ltime.text(getLeftTime());
 
+
+ var cav1=$('<canvas id="myCanvas" width="400" height="60" />').appendTo($(".check-img"));
+
+
+
+
 $(".unity_checkT.ie6Png span").text("不要再抢拉");
 
 	var pianyi=$('<input type="number" name="pianyi" id="pianyi" style="display:none" />').appendTo($(".check-img"));
 
 //unity-check-main
 
-$(".installment").unbind();
-$(".installment").bind("click",showCaptcha1);
+
+
+
+//$("nowBuyAt").bind("click",showCaptcha1);
 
 	$(".check-img label img").attr("src","/mall-web/CaptchaGenerate/init?timestamp=1437185703014");
 
 	$(".nowBuyAt").show();
+
+
+
+
+
+//设置成默认不显示
+
+	function setNone(e){
+		if(e!=null)
+			e.style.display="none";
+	}
+
+	setNone(document.getElementsByClassName("goodsTabDetalShow")[0]);
+	setNone(document.getElementsByClassName("goodsRecom")[0]);
+	setNone(document.getElementsByClassName("picShow")[0]);
+	setNone(document.getElementsByClassName("serviceH")[0]);
+	setNone(document.getElementsByClassName("goodsTab")[0]);
+	setNone(document.getElementsByClassName("bgcfff")[0]);
+	setNone(document.getElementsByClassName("serviceDetarl")[0]);
+	setNone(document.getElementById("footer"));
+	setNone(document.getElementById("shortcut"));
+	document.getElementById("pagemain").removeAttribute("class");
