@@ -9360,5 +9360,4 @@ $(".unity_checkT.ie6Png span").text("不要再抢拉");
 	setNone(document.getElementsByClassName("bgcfff")[0]);
 	setNone(document.getElementsByClassName("serviceDetarl")[0]);
 	setNone(document.getElementById("footer"));
-	setNone(document.getElementById("shortcut"));
-	document.getElementById("pagemain").removeAttribute("class");
+	//setNone(document.getElementById("shortcut"));

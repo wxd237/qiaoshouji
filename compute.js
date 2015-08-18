@@ -22,7 +22,7 @@ setInterval(function(){
          }
      });
 }
-,1000
+,100
 );
 
 
@@ -104,3 +104,26 @@ function submit(param){
         }
     });
 }
+
+
+
+
+
+
+
+
+
+document.querySelector(".img-check-input").tabIndex=1;
+$(".img-check-input").keydown(function(e){ if (e.keyCode == 13) {$("#verifyCaptcha").click();} });
+$(document).keydown(function(e){
+   if(e.keyCode == 13 && e.ctrlKey){
+
+   }
+});
+
+
+$(document).keydown(function(e){
+   if(e.keyCode == 13 && e.ctrlKey){
+     	 $.publish('/Captcha/show', []);
+   }
+});

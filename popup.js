@@ -175,16 +175,14 @@ function LoginUser(username,password){
 
 var users=new Array (
   LoginUser("wxd237@gmail.com","wxide237"),
-  LoginUser("wxd237@gmail.com","wxide237")
+  LoginUser("apple237@163.com","apple237"),
+  LoginUser("redhat0001@163.com","redhat0001"),
+  LoginUser("redhat0002@163.com","redhat0002")
 );
 
 for(var i = 0, l = users.length; i < l; i++) {
    document.getElementById("denglu").options.add(new Option(users[i].username,i));
 }
-
-
-
-
 
 
 
@@ -244,16 +242,27 @@ div5.addEventListener('click', function(e){
     div4.addEventListener('change', function(e){
       console.debug(e);
       var loginame=users[div4.selectedIndex].username;
+      var password=users[div4.selectedIndex].password;
       chrome.tabs.executeScript(null,
                         {code:'document.getElementsByClassName("linkGo")[0].click()'});
-//  chrome.tabs.executeScript(null,
-            //              {code:'document.getElementById('userName').value="'+loginame+'"'});
+      setTimeout(
+        function(){
+          chrome.tabs.executeScript(null,
+                                  {code:'window.frames[0].document.getElementById("userName").value="'+loginame+'";'});
+          chrome.tabs.executeScript(null,
+                                  {code:'window.frames[0].document.getElementById("userPwd").value="'+password+'";'});
+
+          chrome.tabs.executeScript(null,
+                                {code:'window.frames[0].document.getElementById("login1").click();'});                      
+
+        },2000
+      );
 
   //    chrome.tabs.executeScript(null, {file:"dama.js"});
 
           //{code:"document.body.style.backgroundColor='" + e.target.id + "'"});
           //  {code:"document.body.style.backgroundColor='" + delayset.value + "'"});
-      window.close();
+    //  window.close();
 
     });
 
