@@ -177,7 +177,9 @@ var users=new Array (
   LoginUser("wxd237@gmail.com","wxide237"),
   LoginUser("apple237@163.com","apple237"),
   LoginUser("redhat0001@163.com","redhat0001"),
-  LoginUser("redhat0002@163.com","redhat0002")
+  LoginUser("redhat0002@163.com","redhat0002"),
+    LoginUser("zhangqq@163.com","zhangqq"),
+
 );
 
 for(var i = 0, l = users.length; i < l; i++) {
@@ -253,7 +255,7 @@ div5.addEventListener('click', function(e){
                                   {code:'window.frames[0].document.getElementById("userPwd").value="'+password+'";'});
 
           chrome.tabs.executeScript(null,
-                                {code:'window.frames[0].document.getElementById("login1").click();'});                      
+                                {code:'window.frames[0].document.getElementById("login1").click();'});
 
         },2000
       );

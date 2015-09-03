@@ -9278,7 +9278,7 @@ function getLeftTime(){
 		var ts1=document.getElementById("emS").innerText;
 		var tms1=document.getElementById("emMS").innerText;
 
-	   var system_sec=	parseInt(th1)*3600+parseInt(tm1)*60+parseInt(ts1)+parseInt(tms1)/10;
+	   var system_sec=	parseInt(th1)*3600+parseInt(tm1)*60+parseInt(ts1)+parseInt(tms1)/10+1;
 
 	//	var t1=19*3600+18*60;
 		var t1=18*3600+getpianyi();
@@ -9290,9 +9290,9 @@ function getLeftTime(){
 		//	var painyi=$("#pianyi").val();
 
 			var d1=t1-t2;
-	//	var	d1=system_sec+getpianyi();
+		var	d1=system_sec+getpianyi();
 
-			if(d1<0.5){
+			if(d1<0.3){
 				clearInterval(interid);
 				$("#verifyCaptcha").click();
 
@@ -9312,7 +9312,7 @@ function getLeftTime(){
 
 var interid=setInterval(function(){
 	 ltime.text(getLeftTime());
-},200);
+},100);
 
 
 
@@ -9333,15 +9333,11 @@ $(".unity_checkT.ie6Png span").text("不要再抢拉");
 //unity-check-main
 
 
-
-
 //$("nowBuyAt").bind("click",showCaptcha1);
 
 	$(".check-img label img").attr("src","/mall-web/CaptchaGenerate/init?timestamp=1437185703014");
 
 	$(".nowBuyAt").show();
-
-
 
 
 
