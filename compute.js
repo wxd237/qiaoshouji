@@ -25,6 +25,31 @@
 $(".captcha").attr("src","/mall-web/CaptchaGenerate/init?timestamp=1440986400000");
 
 $(".captcha").attr("src","");
+
+function loadCaptcha(){
+    var file='http://www.10010.com/mall-web/CaptchaGenerate/init?timestamp='+new Date().getTime();
+    var oReq = new XMLHttpRequest();
+
+    oReq.open('GET', file, true);
+     oReq.responseType = 'blob';
+
+     oReq.onload = function() {
+
+       var blob11 = new Blob ([oReq.response], {type: 'image/jpeg'});
+       var blobUrl = URL.createObjectURL(blob11);
+       document.getElementsByClassName("captcha")[0].setAttribute("src",blobUrl);
+       $('.unity_checkT span').text(oReq.getResponseHeader('Date'));
+       var img = new Image();
+       img.src =blobUrl;
+
+   };
+      oReq.send();
+
+    $('.img-check-input').val('');
+    $('.J_input-error').hide();
+
+}
+
   function submit(param){
       $(".loadingStyle").show().center();
       buyFlag="";
@@ -113,7 +138,39 @@ $(".captcha").attr("src","");
 
 
 //360buy
+var lastprice=0;
 
+function jdqiang(price1,msec){
+      var curUser=$(".phone:first").text();       //当前领先的用户
+      var myuser=$(".link-user").text();           //我自己
+
+      var itl=setInterval(function(){
+      var userprice = $("#bidPrice").val();
+      var price = Number(jQuery.trim(userprice));
+      if(price>=price1)     clearInterval(it1);
+      if(lastprice!=price+1){
+        initCurrentData();
+        incre();
+        bid();
+      }
+
+
+    },msec);
+}
+
+
+$.ajax({
+url : "http://www.10010.com/mall-web/CaptchaGenerate/init?timestamp=1442110807668",
+type : 'HEAD',
+success : function(data){
+   //file exists
+            console.log(data);
+},
+error : function(){
+   //file not exists
+
+}
+});
 
 
 
@@ -133,7 +190,9 @@ var cid;
 
 var rcode=1;
 var rushId=5298;
+var time=100;
 function qiaogou(){
+    if(time--<0)    clearInterval(cid);
               var startTime = new Date().getTime();
           var buyurl= sendLink.varnish+"v2/api/web/rush.jsonp?timestamp="+ startTime +"&rushId="+ rushId;
   Js.sendDataForCall(buyurl,{dataType:'jsonp',type:'post',manualClose:true},function(data){
@@ -148,13 +207,14 @@ function qiaogou(){
                       }
                           clearInterval(cid);
                         break; //成功
+
       default : break;
 
     }
   });
 }
 
-cid=setInterval(qiaogou,100);
+cid=setInterval(qiaogou,300);
 
 var cid;
 
