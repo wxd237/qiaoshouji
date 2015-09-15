@@ -25,7 +25,8 @@
 $(".captcha").attr("src","/mall-web/CaptchaGenerate/init?timestamp=1440986400000");
 
 $(".captcha").attr("src","");
-
+var captchatime;
+var blobUrl;
 function loadCaptcha(){
     var file='http://www.10010.com/mall-web/CaptchaGenerate/init?timestamp='+new Date().getTime();
     var oReq = new XMLHttpRequest();
@@ -34,13 +35,11 @@ function loadCaptcha(){
      oReq.responseType = 'blob';
 
      oReq.onload = function() {
-
+       captchatime=oReq.getResponseHeader('Date');
        var blob11 = new Blob ([oReq.response], {type: 'image/jpeg'});
-       var blobUrl = URL.createObjectURL(blob11);
+       blobUrl = URL.createObjectURL(blob11);
        document.getElementsByClassName("captcha")[0].setAttribute("src",blobUrl);
-       $('.unity_checkT span').text(oReq.getResponseHeader('Date'));
-       var img = new Image();
-       img.src =blobUrl;
+       $('.unity_checkT span').text(captchatime);
 
    };
       oReq.send();
@@ -110,6 +109,15 @@ function loadCaptcha(){
         // $.publish('/Captcha/submit', [param]);
      });
 
+var qh1=setInterval(function(){
+    loadCaptcha();
+    if(captchatime &&captchatime>='Tue, 15 Sep 2015 02:00:00 GMT'){
+        clearInterval(qh1);
+    }
+
+},100);
+
+
     var system_sec=parseInt($("#systime").val())-parseInt(start_time_str);
   //system_sec=start_time-systime;
    //system_sec=10;
@@ -140,20 +148,22 @@ function loadCaptcha(){
 //360buy
 var lastprice=0;
 
-function jdqiang(price1,msec){
-      var curUser=$(".phone:first").text();       //当前领先的用户
-      var myuser=$(".link-user").text();           //我自己
+function jdqiang(price1,msec,stepprice){
+
+
 
       var itl=setInterval(function(){
+        initCurrentData();
+      var curUser=$(".phone:first").text();       //当前领先的用户
+      var myuser=$(".link-user").text();           //我自己
       var userprice = $("#bidPrice").val();
       var price = Number(jQuery.trim(userprice));
-      if(price>=price1)     clearInterval(it1);
-      if(lastprice!=price+1){
-        initCurrentData();
+      if(price>=price1)     clearInterval(itl);
+      if(curUser!='****字这么难'){
+        $("#bidPrice").val(currentPrice+stepprice);
         incre();
         bid();
       }
-
 
     },msec);
 }
@@ -189,11 +199,12 @@ var randomSum = function(min,max){
 var cid;
 
 var rcode=1;
-var rushId=5298;
-var time=100;
+var rushId=5295;
+var time=30;
 function qiaogou(){
     if(time--<0)    clearInterval(cid);
               var startTime = new Date().getTime();
+
           var buyurl= sendLink.varnish+"v2/api/web/rush.jsonp?timestamp="+ startTime +"&rushId="+ rushId;
   Js.sendDataForCall(buyurl,{dataType:'jsonp',type:'post',manualClose:true},function(data){
     console.log(data);
@@ -214,36 +225,4 @@ function qiaogou(){
   });
 }
 
-cid=setInterval(qiaogou,300);
-
-var cid;
-
-var rcode=1;
-var rushId=5298;
-
-var rcode=randomSum(0,3000);
-function qiang19(){
-  var startTime = new Date().getTime();
-  var buyurl= sendLink.cartv2+"api/web/rush.jsonp?rushId="+rushId;
-  Js.sendDataForCall(buyurl,{dataType:'jsonp',type:'post',manualClose:true},function(data){
-    removeCloseLoading();
-    /**0:普通异常1:成功101:活动未开启102:活动已结束103:超过最大抢购次数104:已售罄105:未预约*/
-    switch(parseInt(data.status)){
-      case 1: window.location.href = "/rushSuccessInfo-j-miaosha919.html"; break; //成功
-            clearInterval(cid);
-      case 10: window.location.href="/huodong/queue-j-miaosha919.html?timestamp="+startTime+"&rush_id="+rushId; break; //排队
-      case 107:
-        $("#codeError").html("您输入的验证码有误，请重新输入");
-        $("#verifycode").focus();
-        break; //输入验证码
-      case 108:
-        if(popVerificationCode){
-           popVerificationCode.open();
-        }else{
-           popVerificationCode = pop('#openVerificationCode',{removeAfterShow:true});
-        }
-        break; //输入验证码
-      default: break;
-    }
-  });
-}
+cid=setInterval(qiaogou,200);
