@@ -5,10 +5,12 @@
       2："${rush_date}" 参数页获取标识,例如：tv0919
 */
 (function(globle){
+
 var popVerificationCode;
 var suffix = new Date().getTime();
-var param;
-var paramPageToken;//参数页获取标识
+
+var param={rushId:4993};
+var paramPageToken='jingxi';//参数页获取标识
 var ToolsUtil ={
   suffix:suffix,
   //生成随机数
@@ -74,6 +76,7 @@ var ToolsUtil ={
       $("#verifycode_"+ suffix).focus();
       return "";
     }
+
     return verificationCode;
   },
   /*
@@ -84,6 +87,22 @@ var ToolsUtil ={
   */
   delayExecution:function(fn,millisec){
     setTimeout(fn,1);
+  },
+  loadcapt:function(){
+    var file='http://authentication.go.lemall.com/validCodeImage?'+new Date().getTime();
+    var oReq = new XMLHttpRequest();
+    oReq.open('GET', file, true);
+    oReq.responseType = 'blob';
+    oReq.onload = function() {
+      captchatime=oReq.getResponseHeader('Date');
+      var blob11 = new Blob ([oReq.response], {type: 'image/jpeg'});
+      console.log(blob11);
+      blobUrl = URL.createObjectURL(blob11);
+      $("#verify_"+suffix).attr("src",blobUrl);
+      $(".font30.dark").text(captchatime);
+
+    };
+    oReq.send();
   },
   createPopElement:function(){
     var str = '<div id="openVerificationCode_'+suffix+'" class="" style="width:600px; margin:0 auto;border:1px solid #dedede;background-color:#fff;">'+
@@ -112,41 +131,59 @@ var ToolsUtil ={
   }
 };
 
+
 //按钮绑定事件
 var InitEventBund = {
   suffix:suffix,
   verificationEvent:function(){
 
-    $("#verifycode").keydown(function(e){ if (e.keyCode == 13) {$("#verificationCodeSubmit").click();} });
+
     var suffix = this.suffix
     //按钮点击事件
     $("#verificationCodeSubmit_"+suffix).live('click',function(){
 
       var code = ToolsUtil.verificationCode();
+      console.log('wxd'+code);
       if(code !=""){
-        if(typeof param != "undefined"){
+          console.debug(param);
+      //  if(typeof param != "undefined"){
+              if(true){
+            console.log('code undefined'+code);
           param.RANDOMCODE = code;
           ToolsUtil.addSubmitLoading();
           globle.huoDongService.sendRequest(param,paramPageToken);
+          console.log('wxd'+code);
         }
       }else{
+        console.log('wxd2'+code);
         return false;
       }
     });
     $("#code_"+suffix).live('click',function(){
-      $("#verify_"+suffix).attr("src",sendLink.auth+"validCodeImage?"+(new Date().getTime()));
+      ToolsUtil.loadcapt();
     });
-    $("#a_verify_"+suffix).live('click',function(){
-      $("#verify_"+suffix).attr("src",sendLink.auth+"validCodeImage?"+(new Date().getTime()));
+
+    $("#a_verify_"+suffix).die().live('click',function(){
+          ToolsUtil.loadcapt();
     });
     $("#closeVerificationCode_"+suffix).live('click',function(){
       if(popVerificationCode){
          popVerificationCode.close();
       }
     });
+
+    $("#verifycode_"+suffix).keydown(function(e){
+       console.log('haha');
+         if (e.keyCode == 13) {
+
+             $("#verificationCodeSubmit_"+suffix).click();
+           }
+      });
+
     $("#verifycode_"+suffix).live('click',function(){
         $("#codeError_"+suffix).empty();
     });
+
   }
 };
 /*
@@ -160,10 +197,15 @@ var HuoDongService = function(){};
 HuoDongService.prototype.sendRequest = function(args,param_page_token){
   if(typeof args != "undefined"){
     param = args;
+  }else{
+    param={rushId:4993};
   }
   if(typeof param_page_token != "undefined"){
     paramPageToken = param_page_token;
+  }else{
+    param_page_token='jingxi';
   }
+
   if(typeof param != "undefined"){
     param.timestamp = new Date().getTime();
     var requestParam = ToolsUtil.dealParamMapToStr(param);
@@ -185,7 +227,7 @@ HuoDongService.prototype.sendRequest = function(args,param_page_token){
         /**
           0:普通异常,1:成功,101:活动未开启,102:活动已结束,103:超过最大抢购次数,104:已售罄,105:未预约,107:验证码错误,108:需要验证码
         */
-        console.log(data);
+
         switch(parseInt(data.status)){
           case 1:window.location.href = "/rushSuccessInfo-j-"+ paramPageToken +"-tj-"+ data.result.promotionId +".html"; break; //成功
       //    case 10: window.location.href="/huodong/queue-j-"+ paramPageToken +".html?timestamp="+param.timestamp+"&rush_id="+param.rushId; break; //排队
@@ -210,5 +252,13 @@ InitEventBund.verificationEvent();
 var obj = ToolsUtil.createPopElement();
 popVerificationCode = pop(obj.popId,{removeAfterShow:true});
 globle.huoDongService = new HuoDongService();
-
+globle.loadcapt=ToolsUtil.loadcapt;
+globle.verificationEvent=InitEventBund.verificationEvent;
+globle.suffix=ToolsUtil.suffix;
 })(window)
+
+
+
+var randomSum = function(min,max){
+  return 0;
+};
