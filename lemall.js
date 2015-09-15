@@ -146,9 +146,8 @@ var InitEventBund = {
       console.log('wxd'+code);
       if(code !=""){
           console.debug(param);
-      //  if(typeof param != "undefined"){
-              if(true){
-            console.log('code undefined'+code);
+       if(typeof param != "undefined"){
+
           param.RANDOMCODE = code;
           ToolsUtil.addSubmitLoading();
           globle.huoDongService.sendRequest(param,paramPageToken);
@@ -207,7 +206,12 @@ HuoDongService.prototype.sendRequest = function(args,param_page_token){
   }
 
   if(typeof param != "undefined"){
-    param.timestamp = new Date().getTime();
+    var d=new Date();
+    d.setHours(12);
+    d.setMinutes(0);
+    d.setSeconds(0);
+    d.setMilliseconds(12);
+    param.timestamp=d.getTime();
     var requestParam = ToolsUtil.dealParamMapToStr(param);
     if(typeof args.RANDOMCODE == "undefined"){
       ToolsUtil.addLoading();//添加loading
