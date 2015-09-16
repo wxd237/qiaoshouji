@@ -118,7 +118,7 @@ qiaogoutime.toGMTString();
 
 var qh1=setInterval(function(){
     loadCaptcha();
-    if(captchatime &&captchatime>=qiaogoutime){
+    if(captchatime &&captchatime>=qiaogoutime.toGMTString()){
         clearInterval(qh1);
     }
 

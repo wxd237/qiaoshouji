@@ -265,7 +265,7 @@ qiaogoutime.setHours(12);
 qiaogoutime.setMinutes(0);
 qiaogoutime.setSeconds(0);
 qiaogoutime.setMilliseconds(0);
-qiaogoutime.toGMTString();
+
 
 $("#verifycode_"+suffix).keydown(function(e){
    console.log('haha');
@@ -275,12 +275,11 @@ $("#verifycode_"+suffix).keydown(function(e){
        }
   });
 
-
 var qh1=setInterval(function(){
     loadcapt();
     var captime=$('.font30.dark').text();
 
-    if(captime>=qiaogoutime){ //如果到时间了，先发送普通的请求，如果要求输入验证码，再把前面的验证码窗口掉出来
+    if(captime>=qiaogoutime.toGMTString()){ //如果到时间了，先发送普通的请求，如果要求输入验证码，再把前面的验证码窗口掉出来
         window.huoDongService.sendRequest({rushId:4993},"jingxi");
         clearInterval(qh1);
     }
