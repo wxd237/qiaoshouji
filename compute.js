@@ -109,9 +109,16 @@ function loadCaptcha(){
         // $.publish('/Captcha/submit', [param]);
      });
 
+var qiaogoutime=new Date();
+qiaogoutime.setHours(10);
+qiaogoutime.setMinutes(0);
+qiaogoutime.setSeconds(0);
+qiaogoutime.setMilliseconds(0);
+qiaogoutime.toGMTString();
+
 var qh1=setInterval(function(){
     loadCaptcha();
-    if(captchatime &&captchatime>='Tue, 15 Sep 2015 02:00:00 GMT'){
+    if(captchatime &&captchatime>=qiaogoutime){
         clearInterval(qh1);
     }
 
@@ -199,8 +206,8 @@ var randomSum = function(min,max){
 var cid;
 
 var rcode=1;
-var rushId=5295;
-var time=30;
+var rushId=4674;
+var time=25;
 function qiaogou(){
     if(time--<0)    clearInterval(cid);
               var startTime = new Date().getTime();
