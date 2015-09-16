@@ -8,7 +8,7 @@
 
 var popVerificationCode;
 var suffix = new Date().getTime();
-
+var captchatime;
 var param={rushId:4993};
 var paramPageToken='jingxi';//参数页获取标识
 var ToolsUtil ={
@@ -171,13 +171,6 @@ var InitEventBund = {
       }
     });
 
-    $("#verifycode_"+suffix).keydown(function(e){
-       console.log('haha');
-         if (e.keyCode == 13) {
-
-             $("#verificationCodeSubmit_"+suffix).click();
-           }
-      });
 
     $("#verifycode_"+suffix).live('click',function(){
         $("#codeError_"+suffix).empty();
@@ -231,7 +224,7 @@ HuoDongService.prototype.sendRequest = function(args,param_page_token){
         /**
           0:普通异常,1:成功,101:活动未开启,102:活动已结束,103:超过最大抢购次数,104:已售罄,105:未预约,107:验证码错误,108:需要验证码
         */
-
+        console.log(data);
         switch(parseInt(data.status)){
           case 1:window.location.href = "/rushSuccessInfo-j-"+ paramPageToken +"-tj-"+ data.result.promotionId +".html"; break; //成功
       //    case 10: window.location.href="/huodong/queue-j-"+ paramPageToken +".html?timestamp="+param.timestamp+"&rush_id="+param.rushId; break; //排队
@@ -245,7 +238,7 @@ HuoDongService.prototype.sendRequest = function(args,param_page_token){
               popVerificationCode = pop(obj.popId,{removeAfterShow:true});
             }
             break; //输入验证码
-        //  default: window.location.href = "/rushFailInfo.html-j-"+ paramPageToken +".html?r="+data.status;
+          default:// window.location.href = "/rushFailInfo.html-j-"+ paramPageToken +".html?r="+data.status;
         }
       });
     }
@@ -266,3 +259,30 @@ globle.suffix=ToolsUtil.suffix;
 var randomSum = function(min,max){
   return 0;
 };
+
+var qiaogoutime=new Date();
+qiaogoutime.setHours(12);
+qiaogoutime.setMinutes(0);
+qiaogoutime.setSeconds(0);
+qiaogoutime.setMilliseconds(0);
+qiaogoutime.toGMTString();
+
+$("#verifycode_"+suffix).keydown(function(e){
+   console.log('haha');
+     if (e.keyCode == 13) {
+
+         $("#verificationCodeSubmit_"+suffix).click();
+       }
+  });
+
+
+var qh1=setInterval(function(){
+    loadcapt();
+    var captime=$('.font30.dark').text();
+
+    if(captime>=qiaogoutime){ //如果到时间了，先发送普通的请求，如果要求输入验证码，再把前面的验证码窗口掉出来
+        window.huoDongService.sendRequest({rushId:4993},"jingxi");
+        clearInterval(qh1);
+    }
+
+},100);
