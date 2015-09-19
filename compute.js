@@ -110,14 +110,15 @@ function loadCaptcha(){
      });
 
 var qiaogoutime=new Date();
-qiaogoutime.setHours(10);
-qiaogoutime.setMinutes(0);
+qiaogoutime.setHours(9);
+qiaogoutime.setMinutes(35);
 qiaogoutime.setSeconds(0);
 qiaogoutime.setMilliseconds(0);
 qiaogoutime.toGMTString();
 
 var qh1=setInterval(function(){
     loadCaptcha();
+    var captchatime=$(".unity_checkT.ie6Png span").text();
     if(captchatime &&captchatime>=qiaogoutime.toGMTString()){
         clearInterval(qh1);
     }
