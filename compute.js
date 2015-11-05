@@ -117,10 +117,12 @@ qiaogoutime.setMilliseconds(0);
 qiaogoutime.toGMTString();
 
 var qh1=setInterval(function(){
-    loadCaptcha();
+    
     var captchatime=$(".unity_checkT.ie6Png span").text();
     if(captchatime &&captchatime>=qiaogoutime.toGMTString()){
         clearInterval(qh1);
+    }else{
+    	loadCaptcha();
     }
 
 },100);
