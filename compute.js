@@ -66,6 +66,8 @@ function loadCaptcha(){
                   $(".thickdiv").show();
                   buyFlag="2";
                   goodsUrl = data.goodsUrl;
+                  window.goodUrl=data.goodsUrl;
+                  console.log(data);
                   timeOut();
               }else{
                     $.publish('/Captcha/show', []);     //不成功就刷新验证码
