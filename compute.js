@@ -66,6 +66,8 @@ function loadCaptcha(){
                   $(".thickdiv").show();
                   buyFlag="2";
                   goodsUrl = data.goodsUrl;
+                  window.goodUrl=data.goodsUrl;
+                  console.log(data);
                   timeOut();
               }else{
                     $.publish('/Captcha/show', []);     //不成功就刷新验证码
@@ -110,16 +112,19 @@ function loadCaptcha(){
      });
 
 var qiaogoutime=new Date();
-qiaogoutime.setHours(10);
-qiaogoutime.setMinutes(0);
+qiaogoutime.setHours(9);
+qiaogoutime.setMinutes(35);
 qiaogoutime.setSeconds(0);
 qiaogoutime.setMilliseconds(0);
 qiaogoutime.toGMTString();
 
 var qh1=setInterval(function(){
-    loadCaptcha();
+    
+    var captchatime=$(".unity_checkT.ie6Png span").text();
     if(captchatime &&captchatime>=qiaogoutime.toGMTString()){
         clearInterval(qh1);
+    }else{
+    	loadCaptcha();
     }
 
 },100);
