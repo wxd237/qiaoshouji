@@ -275,7 +275,7 @@ window.MS1={};
             dataType: 'text',
             cache: false,
             success: function (re) {
-                if(re!="活动暂未开始，请刷新")   clearinterval(MS.intid);
+                MS.respmsg=re;
                 console.log(re+new Date());
                 $(questionId).innerHTML = re;
             }
@@ -335,15 +335,20 @@ $("#seckillLayer").layer("show");
 
 $(document).keydown(function(e){
    if(e.keyCode == 13 && e.ctrlKey){
-
-
+        MS.refreshQuestion('seckillQuestion');
    }
 });
 
 
 $("#seckillAnswer").keydown(function(e){ if (e.keyCode == 13) {  seckill();;} });
 
-MS.intid=setinterval(function(){
-  MS.refreshQuestion('seckillQuestion');
-  $(".layer-login-header").text(MS.respDate);
-},10);
+
+
+var qh1=setInterval(function(){
+    if(MS.respmsg=="活动暂未开始，请刷新"){
+         	 MS.refreshQuestion('seckillQuestion');
+    }else{
+    	clearInterval(qh1);
+   
+    }
+},80);
